@@ -17,6 +17,8 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 import { ChangePasswordModalComponent } from './components/change-password-modal/change-password-modal.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { MeteoComponent } from './components/meteo/meteo.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { MeteoComponent } from './components/meteo/meteo.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent],
