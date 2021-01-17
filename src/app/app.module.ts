@@ -16,6 +16,7 @@ import { ModifySourceModalComponent } from './components/modify-source-modal/mod
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { ChangePasswordModalComponent } from './components/change-password-modal/change-password-modal.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { MeteoComponent } from './components/meteo/meteo.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PostsComponent } from './components/posts/posts.component';
     ModifySourceModalComponent,
     NotFoundPageComponent,
     ChangePasswordModalComponent,
-    PostsComponent
+    PostsComponent,
+    MeteoComponent
   ],
   imports: [
     BrowserModule,

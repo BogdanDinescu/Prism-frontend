@@ -1,0 +1,14 @@
+<div class="jumbotron jumbotron-fluid">
+    <h1 class="display-4 text-center">Meteo 24h</h1>
+    <hr class="my-4">
+    <div class="cards">
+        <div class="card" *ngFor="let data of meteoData">
+            <div class="card-body">
+                <h3 class="card-title">{{data.data.instant.details.air_temperature}} °C</h3>
+                <p class="card-text">{{data.time}}</p>
+                <p class="card-text">Precitpitații: {{data.data.next_1_hours.details.precipitation_amount}}%</p> 
+            </div>      
+            <img class="card-img-bottom" src="https://api.met.no/images/weathericons/svg/{{data.data.next_1_hours.summary.symbol_code}}.svg"/>
+        </div>
+    </div>
+  </div>

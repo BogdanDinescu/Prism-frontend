@@ -15,11 +15,12 @@ export class PostsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.updateLoading(false);
+    setTimeout(() => {
+      this.updateLoading(false);
+    },2000);
   }
 
   updateLoading(loading: boolean) {
     this.loadingChange.emit(loading);
   }
-
 }

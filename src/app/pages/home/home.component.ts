@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
     } else {
       this.open = "news";
     }
-
   }
 
   doOpen(content: string):void {
