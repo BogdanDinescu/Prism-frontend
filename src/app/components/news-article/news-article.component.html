@@ -5,7 +5,7 @@
   <div class="card-body">
     <h5 class="card-title font-weight-bold">{{title}}</h5>
     <a [href]="source" target="_blank"><h6 class="card-subtitle text-muted">{{source}}</h6></a>
-    <p class="card-text">{{content}}</p>
+    <p class="card-text pt-1" [innerHtml]="content"></p>
   </div>
   <div class="card-footer text-center">
     <a [href]="link" target="_blank">Citește mai mult</a>
