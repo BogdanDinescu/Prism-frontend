@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //url: 'https://localhost:44346/'
-  url: 'https://prism-api.cleverapps.io/'
+  url: 'https://localhost:5001/'
+  //url: 'https://prism-api.cleverapps.io/'
 };
 
 /*
