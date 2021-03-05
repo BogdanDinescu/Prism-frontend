@@ -15,11 +15,12 @@ export class NewsComponent implements OnInit {
 
   @Output() loadingChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  public articles: any[];
+  public articles: any[] = [];
   public sources: any[];
   public loadingMore: boolean = false;
   public noSources: boolean;
   private page: number = 0;
+  private _array = Array;
 
   constructor(
     private modalService: NgbModal,
@@ -65,11 +66,50 @@ export class NewsComponent implements OnInit {
     )
   }
 
+  hamming_distance = (a: number, b: number) => {
+    let d = 0;
+    let h = a ^ b;
+    while (h > 0) {
+        d ++;
+        h &= h - 1;
+    }
+    return d;
+  }
+
+  updateArticles(news) {
+    /*for (let i = 0; i<news.length; i++) {
+      news[i] = [news[i],news[i]]; 
+    }
+    this.articles = this.articles.concat(news);
+    console.log(this.articles);
+    return;*/
+    console.log(news);
+    for (let i = 1; i<news.length; i++) {
+      if (Array.isArray(news[i-1])) {
+        if (this.hamming_distance(news[i].simHash,news[i-1][0].simHash) < 5) {
+          let a = news[i-1].push(news[i]);
+          news.splice(i-1,2);
+          news[i] = a;
+          i--;
+        }
+      } else {
+        if (this.hamming_distance(news[i].simHash,news[i-1].simHash) < 5) {
+          let a = [news[i-1],news[i]];
+          news.splice(i-1,2);
+          news[i] = a;
+          i--;
+        }
+      }   
+    }
+    console.log(news);
+    this.articles = this.articles.concat(news);
+  }
+
   ngOnInit(): void {
     this.getSources();
     this.news.getNews().subscribe(
       (res) => {
-        this.articles = res.news;
+        this.updateArticles(res.news);
         this.updateLoading(false);
       },
       (err) => {
@@ -144,7 +184,7 @@ export class NewsComponent implements OnInit {
     this.page = this.page + 1;
     this.news.getNews(this.page).subscribe(
       (res) => {
-        this.articles = this.articles.concat(res.news);
+        this.updateArticles(res.news)
         this.loadingMore = false;
       },
       (err) => {

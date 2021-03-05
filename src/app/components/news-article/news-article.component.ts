@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Article } from 'src/app/models/Article';
 
 @Component({
   selector: 'app-news-article',
@@ -7,12 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NewsArticleComponent implements OnInit {
 
-  @Input('title') title: string;
-  @Input('source') source: string;
-  @Input('imageUrl') imageUrl: string;
-  @Input('content') content: string;
-  @Input('link') link: string;
-
+  @Input('article') article: Article;
+  @Input('tuple') tuple: [Article];
   constructor() { }
 
   ngOnInit(): void {

@@ -1,13 +1,42 @@
-<div class="card shadow m-2 bg-white rounded">
-  <a [href]="link" target="_blank">
-    <img class="card-img-top" [src]="imageUrl" alt="Fara imagine">
+<div id="card{{tuple[0].id}}" class="card shadow m-2 bg-white rounded carousel slide" data-interval="false" *ngIf = "!!tuple">
+  <div class="carousel-inner">
+      <div *ngFor="let article of tuple; let first = first;" [ngClass]="{ 'active' : first}" class="carousel-item">
+        <a [href]="article.link" target="_blank">
+          <img class="card-img-top" [src]="article.imageUrl" alt="Fara imagine">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">{{article.title}}</h5>
+          <a [href]="article.source" target="_blank"><h6 class="card-subtitle text-muted">{{article.source}}</h6></a>
+          <p class="card-text pt-1" [innerHtml]="article.content"></p>
+        </div>
+        <div class="card-footer text-center">
+          <a [href]="article.link" target="_blank">Citește mai mult</a>
+        </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#card{{tuple[0].id}}" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#card{{tuple[0].id}}" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+    
+<div id="card{{article.id}}" class="card shadow m-2 bg-white rounded" *ngIf = "!!article">
+
+  <a [href]="article.link" target="_blank">
+    <img class="card-img-top" [src]="article.imageUrl" alt="Fara imagine">
   </a>
   <div class="card-body">
-    <h5 class="card-title font-weight-bold">{{title}}</h5>
-    <a [href]="source" target="_blank"><h6 class="card-subtitle text-muted">{{source}}</h6></a>
-    <p class="card-text pt-1" [innerHtml]="content"></p>
+    <h5 class="card-title font-weight-bold">{{article.title}}</h5>
+    <a [href]="article.source" target="_blank"><h6 class="card-subtitle text-muted">{{article.source}}</h6></a>
+    <p class="card-text pt-1" [innerHtml]="article.content"></p>
   </div>
   <div class="card-footer text-center">
-    <a [href]="link" target="_blank">Citește mai mult</a>
+    <a [href]="article.link" target="_blank">Citește mai mult</a>
   </div>
+
 </div>
+

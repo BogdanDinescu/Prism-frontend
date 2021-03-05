@@ -18,13 +18,17 @@
 </div>
 <div class="d-flex flex-column align-items-center">
     <div *ngFor="let article of articles">
-        <app-news-article
-        [title] = "article.title"
-        [source] = "article.source"
-        [imageUrl] = "article.imageUrl"
-        [content] = "article.content"
-        [link] = "article.link"
-        ></app-news-article>
+        <ng-template [ngIf]="_array.isArray(article)" [ngIfElse]="simpleArticle">
+            <app-news-article
+            [tuple] = "article">
+            </app-news-article>
+        </ng-template>
+          
+        <ng-template #simpleArticle>
+            <app-news-article
+            [article] = "article">
+            </app-news-article>
+        </ng-template> 
     </div>
 </div>
 <div class="text-center m-2" *ngIf="!noSources">
