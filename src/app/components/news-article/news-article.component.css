@@ -21,3 +21,9 @@
         height: 25em;
     }
 }
+
+.carousel-control-prev,.carousel-control-next {
+    z-index: 0;
+    font-size: 4em;
+    text-shadow: 0px 0px 5px #000000;
+}

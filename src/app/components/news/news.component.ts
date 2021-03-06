@@ -88,14 +88,14 @@ export class NewsComponent implements OnInit {
       if (Array.isArray(news[i-1])) {
         if (this.hamming_distance(news[i].simHash,news[i-1][0].simHash) < 5) {
           let a = news[i-1].push(news[i]);
-          news.splice(i-1,2);
+          news.splice(i-1,1);
           news[i] = a;
           i--;
         }
       } else {
         if (this.hamming_distance(news[i].simHash,news[i-1].simHash) < 5) {
           let a = [news[i-1],news[i]];
-          news.splice(i-1,2);
+          news.splice(i-1,1);
           news[i] = a;
           i--;
         }
