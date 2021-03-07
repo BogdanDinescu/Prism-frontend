@@ -15,7 +15,6 @@ import { AddSourceModalComponent } from './components/add-source-modal/add-sourc
 import { ModifySourceModalComponent } from './components/modify-source-modal/modify-source-modal.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { ChangePasswordModalComponent } from './components/change-password-modal/change-password-modal.component';
-import { PostsComponent } from './components/posts/posts.component';
 import { MeteoComponent } from './components/meteo/meteo.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -33,7 +32,6 @@ import { environment } from '../environments/environment';
     ModifySourceModalComponent,
     NotFoundPageComponent,
     ChangePasswordModalComponent,
-    PostsComponent,
     MeteoComponent
   ],
   imports: [
