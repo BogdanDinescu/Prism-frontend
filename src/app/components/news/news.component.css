@@ -1,10 +1,8 @@
 .source-list {
-    height: 5em;
     display: flex;
     align-items: center;
     flex-direction: row;
-    overflow-x: scroll;
-    background-color: seashell;
+    flex-wrap: wrap;
 }
 
 span {

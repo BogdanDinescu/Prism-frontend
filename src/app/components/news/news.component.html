@@ -1,18 +1,27 @@
-<nav class="source-list">
-    <button class="m-2 btn btn-danger" *ngIf="auth.isAdmin()" (click)="loadNewNews()">Load new</button>
-    <button class="m-2 btn btn-primary" *ngIf="auth.isAdmin()" (click)="openAddSourceModal()">Adaugă</button>
-    <button class="m-2 btn btn-primary" (click)="updateSources()">Save</button>
-    <div *ngFor="let source of sources">
-        <div class="mr-1 ml-1" (click)="sourceClick(source.name)"
-        [ngClass]="source.selected ? 'btn btn-dark' : 'btn btn-outline-secondary'">
-            {{source.name}}
+<div class="collapse" id="sourceList">
+    <div class="card source-list card-body">
+        <button class="m-2 btn btn-danger" *ngIf="auth.isAdmin()" (click)="loadNewNews()">Load new</button>
+        <button class="m-2 btn btn-primary" *ngIf="auth.isAdmin()" (click)="openAddSourceModal()">Adaugă</button>
+        <button class="m-2 btn btn-primary" (click)="updateSources()">Save</button>
+        <div class="btn-group-toggle" *ngFor="let source of sources">
+            <div class="mr-1 ml-1" (click)="sourceClick(source.name)"
+            [ngClass]="source.selected ? 'btn btn-dark active' : 'btn btn-secondary'">
+                {{source.name}}
+            </div>
+            <span *ngIf="auth.isAdmin()">
+                <sup><button class="badge badge-danger" (click)="deleteSource(source.id)">Sterge</button></sup>
+                <sub><button class="badge badge-info" (click)="openModifySourceModal(source)">Modifică</button></sub>
+            </span>
         </div>
-        <span *ngIf="auth.isAdmin()">
-            <sup><button class="badge badge-danger" (click)="deleteSource(source.id)">Sterge</button></sup>
-            <sub><button class="badge badge-info" (click)="openModifySourceModal(source)">Modifică</button></sub>
-        </span>
     </div>
-</nav>
+</div>
+<form class="form-inline justify-content-center">
+    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#sourceList" aria-expanded="false" aria-controls="sourceList">
+        Selectare Surse
+    </button>
+    <input class="form-control col-md-5 col-8" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-secondary" type="submit">Search</button>
+</form>
 <div class="text-center text-muted" *ngIf="noSources">
     Nici o sursă selectată!    
 </div>
