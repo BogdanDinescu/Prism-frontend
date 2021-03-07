@@ -3,10 +3,12 @@ import { Injectable } from '@angular/core';
 import { from, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { tap, catchError } from 'rxjs/operators';
+import jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthentificationService {
   private url: string = environment.url;
   constructor(private http: HttpClient) {}
@@ -35,6 +37,18 @@ export class AuthentificationService {
 
   getToken(): string {
     return localStorage.getItem('token');
+  }
+
+  isTokenValid(): boolean {
+    var token = this.getToken();
+    if (token) {
+      var decoded = jwt_decode(token);
+      if (decoded['exp'] > Math.floor(Date.now()/1000)) {
+        return true;
+      }
+      return false;
+    }
+    return false;
   }
 
   isAdmin(): boolean {
