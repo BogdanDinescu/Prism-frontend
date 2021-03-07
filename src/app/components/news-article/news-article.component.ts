@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Article } from 'src/app/models/Article';
+import { NewsService } from 'src/app/services/news/news.service';
 
 @Component({
   selector: 'app-news-article',
@@ -9,10 +10,20 @@ import { Article } from 'src/app/models/Article';
 export class NewsArticleComponent implements OnInit {
 
   @Input('article') article: Article;
-  
-  constructor() { }
+  public copySuccess: boolean = false;
+
+  constructor(private news: NewsService) { }
 
   ngOnInit(): void {
   }
 
+  copyToClipboard(text) {
+    var self = this;
+    navigator.clipboard.writeText(text).then(function() {
+      console.log('Copying to clipboard was successful!');
+      self.copySuccess = true;
+    }, function(err) {
+      console.log('Could not copy text: ', err);
+    });
+  }
 }
