@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
  
-  public loading: boolean;
+  public loading: boolean = true;
   public open: string;
 
   constructor(
@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   }
 
   doOpen(content: string):void {
+    this.loading = true;
     this.open = content;
     localStorage.setItem("tab",content);
   }
