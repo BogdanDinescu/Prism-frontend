@@ -185,10 +185,11 @@ export class NewsComponent implements OnInit {
     this.news.searchNews(this.searchQuery).subscribe(
       (res) => {
         this.updateLoading(false);
-        if (res == null) {
+        if (res === null || res.news === null || res.news.length === 0) {
           this.articles = [];
+        } else {
+          this.articles = res.news;
         }
-        this.articles = res.news;
       },
       (err) => {
         console.log(err);
