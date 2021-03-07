@@ -84,7 +84,6 @@ export class NewsComponent implements OnInit {
     this.articles = this.articles.concat(news);
     console.log(this.articles);
     return;*/
-    console.log(news);
     for (let i = 1; i<news.length; i++) {
       if (Array.isArray(news[i-1])) {
         if (this.hamming_distance(news[i].simHash,news[i-1][0].simHash) < 5) {
