@@ -1,0 +1,19 @@
+<div id="cardCarousel{{tuple[0].id}}" class="card shadow mb-2 mt-2 bg-white rounded carousel slide" data-interval="false">
+    <div class="carousel-inner">
+        <div *ngFor="let article of tuple; let first = first;" [ngClass]="{ 'active' : first}" class="carousel-item">
+            <app-news-article
+            [article] = "article">
+            </app-news-article>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#cardCarousel{{tuple[0].id}}" role="button" data-slide="prev">
+      <span aria-hidden="true"><</span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#cardCarousel{{tuple[0].id}}" role="button" data-slide="next">
+      <span aria-hidden="true">></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+  
+  

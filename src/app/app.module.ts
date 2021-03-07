@@ -18,6 +18,7 @@ import { ChangePasswordModalComponent } from './components/change-password-modal
 import { MeteoComponent } from './components/meteo/meteo.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { NewsArticleCarouselComponent } from './components/news-article-carousel/news-article-carousel.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { environment } from '../environments/environment';
     ModifySourceModalComponent,
     NotFoundPageComponent,
     ChangePasswordModalComponent,
-    MeteoComponent
+    MeteoComponent,
+    NewsArticleCarouselComponent
   ],
   imports: [
     BrowserModule,

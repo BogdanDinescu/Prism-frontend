@@ -9,7 +9,7 @@ import { Article } from 'src/app/models/Article';
 export class NewsArticleComponent implements OnInit {
 
   @Input('article') article: Article;
-  @Input('tuple') tuple: [Article];
+  
   constructor() { }
 
   ngOnInit(): void {
