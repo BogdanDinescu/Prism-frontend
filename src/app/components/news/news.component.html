@@ -19,8 +19,8 @@
     <button class="btn btn-secondary m-2" type="button" data-toggle="collapse" data-target="#sourceList" aria-expanded="false" aria-controls="sourceList">
         Selectare Surse
     </button>
-    <input class="form-control col-md-5 col-8" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-secondary m-2" type="submit">Search</button>
+    <input class="form-control col-md-5 col-8" type="search" placeholder="Caută" aria-label="Search" [(ngModel)]="searchQuery" name="search">
+    <button class="btn btn-outline-secondary m-2" (click)="search()">Caută</button>
 </form>
 <div class="text-center text-muted" *ngIf="noSources">
     Nici o sursă selectată!    

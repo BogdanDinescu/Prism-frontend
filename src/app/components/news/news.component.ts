@@ -19,6 +19,7 @@ export class NewsComponent implements OnInit {
   public sources: any[];
   public loadingMore: boolean = false;
   public noSources: boolean;
+  public searchQuery: string;
   private page: number = 0;
   private _array = Array;
 
@@ -177,6 +178,22 @@ export class NewsComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  search(): void {
+    this.updateLoading(true);
+    this.news.searchNews(this.searchQuery).subscribe(
+      (res) => {
+        this.updateLoading(false);
+        if (res == null) {
+          this.articles = [];
+        }
+        this.articles = res.news;
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
   }
 
   loadMore(): void {
