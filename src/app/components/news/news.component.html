@@ -4,7 +4,7 @@
         <button class="m-2 btn btn-primary" *ngIf="auth.isAdmin()" (click)="openAddSourceModal()">Adaugă</button>
         <div class="btn-group-toggle" *ngFor="let source of sources">
             <div class="mr-1 ml-1" (click)="sourceClick(source.name)"
-            [ngClass]="source.selected ? 'btn btn-dark active' : 'btn btn-secondary'">
+            [ngClass]="source.selected ? 'btn btn-primary' : 'btn btn-outline-dark'">
                 {{source.name}}
             </div>
             <span *ngIf="auth.isAdmin()">
