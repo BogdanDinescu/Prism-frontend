@@ -1,4 +1,4 @@
-<div id="card{{article.id}}" class="card shadow mb-2 mt-2 bg-white rounded">
+<div id="card{{article.id}}" class="card shadow bg-white rounded">
   <a [href]="article.link" target="_blank">
     <img class="card-img-top" [src]="article.imageUrl" alt="Fara imagine">
   </a>
@@ -8,8 +8,8 @@
     <p class="card-text pt-1" [innerHtml]="article.content"></p>
   </div>
   <div class="card-footer text-center">
-    <a class="ml-5 float-left" [href]="article.link" target="_blank">Citește mai mult</a>
-    <a class="mr-5 float-right" [ngClass]="{ 'text-success' : copySuccess }" role="button" (click)="copyToClipboard(article.link)">Copiază sursa</a>
+    <a class="ml-1 float-left" [href]="article.link" target="_blank">Citește mai mult</a>
+    <a class="mr-1 float-right" [ngClass]="{ 'text-success' : copySuccess }" role="button" (click)="copyToClipboard(article.link)">Copiază sursa</a>
   </div>
 </div>
 
