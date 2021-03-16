@@ -22,8 +22,8 @@ export class ModifySourceModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.sourceForm = this.formBuilder.group({
-      Name: ['', [Validators.required]],
-      Link: ['', [Validators.required]],
+      Name: [this.source.name, [Validators.required]],
+      Link: [this.source.link, [Validators.required]],
     });
   }
 
