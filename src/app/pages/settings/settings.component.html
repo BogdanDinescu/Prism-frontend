@@ -1,14 +1,17 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/"><h2 class="navbar-brand mb-0"><img class="logo" src="/assets/prism-only-logo.png">Înapoi</h2></a>
+</nav>
 <div class="jumbotron">
     <div class="text-center">
-        <img class="logo" src="/assets/prism-logo.png">
-        <h1 class="display-4">Settings</h1>
+        <h1 class="display-4">Setări</h1>
     </div>
     <hr class="my-4">
     <h5 class="display-5">Salut, {{user.name}}</h5>
-    <h6 class="display-6">{{user.email}}</h6>
-    <form [formGroup]="userForm" (ngSubmit)="doChange()" class="col-12 col-md-2">
+    <h6 class="display-6 text-muted">{{user.email}}</h6>
+    <br>
+    <form [formGroup]="userForm" (ngSubmit)="doChange()" class="border rounded pl-0 col-12 col-md-2">
       <div class="form-group">
-        <label>Name</label>
+        <label>Nume</label>
         <input
             class="form-control"
             type="text"
@@ -18,7 +21,7 @@
         <span 
             class="text-danger" 
             *ngIf="!userForm.controls.Name.pristine && userForm.controls.Name.status === 'INVALID'"
-        >Name cannot be empty</span>
+        >Numele nu poate fi gol</span>
       </div>
   
       <button
@@ -41,7 +44,7 @@
     <br>
     <button
       type="button"
-      class="btn btn-primary"
+      class="btn btn-primary mb-2"
       (click)="openChangePasswordModal()"
     >Schimbă parola
     </button>
