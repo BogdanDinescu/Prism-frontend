@@ -1,14 +1,15 @@
 <div class="jumbotron jumbotron-fluid">
-    <h1 class="display-4 text-center">Meteo 24h</h1>
+    <h1 class="display-4 text-center">Meteo</h1>
+    <h5 class="display-5 text-center text-muted">{{meteoData.title}}</h5> 
+    <h6 class="display-6 text-center text-muted">Source: <a href="https://www.metaweather.com" target="_blank">MetaWeather</a></h6> 
     <hr class="my-4">
     <div class="cards">
-        <div class="card" *ngFor="let data of meteoData">
+        <div class="card" *ngFor="let data of meteoData.consolidated_weather">
             <div class="card-body">
-                <h3 class="card-title">{{data.data.instant.details.air_temperature}} °C</h3>
-                <p class="card-text">{{data.time}}</p>
-                <p class="card-text">Precitpitații: {{data.data.next_1_hours.details.precipitation_amount}}%</p> 
+                <h3 class="card-title">{{data.the_temp}} °C</h3>
+                <p class="card-text">{{data.applicable_date}}</p>
             </div>      
-            <img class="card-img-bottom" src="https://api.met.no/images/weathericons/svg/{{data.data.next_1_hours.summary.symbol_code}}.svg"/>
+            <img class="card-img-bottom" src="https://www.metaweather.com/static/img/weather/{{data.weather_state_abbr}}.svg"/>
         </div>
     </div>
   </div>

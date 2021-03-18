@@ -14,18 +14,11 @@ export class MeteoComponent implements OnInit {
 
   constructor(private meteo: MeteoService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     navigator.geolocation.getCurrentPosition(geo => {
       this.meteo.getMeteoByLatLon(geo.coords.latitude,geo.coords.longitude).subscribe(
         (res) => {
-          let list = res.properties.timeseries;
-          while (list.length > 24) {
-            list.pop()
-          }
-          list.map(x => {
-            x.time = (new Date(x.time)).toLocaleString('en-GB');
-          })
-          this.meteoData = list;
+          this.meteoData = res;
           this.updateLoading(false);
         },
         (err) => {
