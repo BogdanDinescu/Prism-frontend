@@ -20,8 +20,8 @@ export class MeteoService {
     };
   }
 
-  getMeteo(cityId: Number): Observable<any> {
-    return this.http.get(this.url + 'meteo/city?cityId=' + cityId, this.getHeaders())
+  getMeteo(cityName: string): Observable<any> {
+    return this.http.get(this.url + 'meteo/city?cityName=' + cityName, this.getHeaders())
   }
 
   getMeteoByLatLon(lat: Number, lng: Number): Observable<any> {
