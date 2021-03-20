@@ -1,17 +1,25 @@
-<div class="jumbotron jumbotron-fluid">
-    <h1 class="display-4 text-center">Meteo</h1>
-    <h5 class="display-5 text-center text-muted">{{meteoData.city_name}}</h5> 
-    <h6 class="display-6 text-center text-muted">Source: <a href="https://www.weatherbit.io" target="_blank">Weatherbit</a></h6> 
-    <hr class="my-4">
-    <div class="cards">
-        <div class="card" *ngFor="let data of meteoData.data">
-            <div class="card-body">
-                <h3 class="card-title">{{data.low_temp}}/{{data.high_temp}} °C</h3>
-                <p class="card-text">{{data.valid_date}}</p>
-                <p class="card-text">Precipitații: {{data.pop}}%</p>
-            </div>      
-            <img class="card-img-bottom" src="https://www.weatherbit.io/static/img/icons/{{data.weather.icon}}.png"/>
-            <p>{{data.weather.description}}</p>
-        </div>
+<h1 class="display-4 text-center">Meteo</h1>
+<h5 class="display-5 text-center text-muted" *ngIf="meteoData !== undefined && meteoData !== null">{{meteoData.city_name}}</h5> 
+<h6 class="display-6 text-center text-muted">Sursă: <a href="https://www.weatherbit.io" target="_blank">Weatherbit</a></h6> 
+<hr class="my-4">
+<div class="form-inline justify-content-center">
+    <div class="alert alert-warning col-md-12 text-center" role="alert" *ngIf="showAlert">Locație dezactivată</div>
+    <button class="btn btn-primary m-2" (click)="getMeteoByLocation()">Locație curentă</button>
+    <input class="form-control col-md-5 col-8" type="search" placeholder="Alege oraș" aria-label="Search" [(ngModel)]="cityName" name="search">
+    <button class="btn btn-outline-secondary m-2" (click)="searchCity()">Ok</button>
+</div>
+
+<div class="cards">
+    <div class="card" *ngFor="let data of meteoData.data; let first = first;" [ngClass]="{ 'border-dark' : first}">
+        <div class="card-body text-center">
+            <h4 class="card-title">
+                <img class="card-img-bottom" src="https://www.weatherbit.io/static/img/icons/{{data.weather.icon}}.png"/>
+                {{math.round(data.temp)}} °C
+            </h4>
+            <p class="text-muted">{{dateFormat(data.valid_date)}}</p>
+            <div>{{data.low_temp}} - {{data.high_temp}} °C</div>
+            <div>Precipitații: {{data.pop}}%</div>
+            <div>Vânt {{data.wind_spd.toFixed(2)}} m/s</div>
+         </div>
     </div>
-  </div>
+</div>

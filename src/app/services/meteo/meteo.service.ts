@@ -20,11 +20,27 @@ export class MeteoService {
     };
   }
 
-  getMeteo(cityName: string): Observable<any> {
+  getMeteoByCityName(cityName: string): Observable<any> {
     return this.http.get(this.url + 'meteo/city?cityName=' + cityName, this.getHeaders())
   }
 
   getMeteoByLatLon(lat: Number, lng: Number): Observable<any> {
     return this.http.get(this.url + 'meteo/location?lat=' + lat + '&lng=' + lng, this.getHeaders());
+  }
+
+  getChosenCity() {
+    return localStorage.getItem('chosenCity');
+  }
+
+  setChosenCity(city: string) {
+    localStorage.setItem('chosenCity', city);
+  }
+
+  isCitySet() {
+    return localStorage.getItem('chosenCity') !== null;
+  }
+
+  unsetCity() {
+    localStorage.removeItem('chosenCity');
   }
 }
