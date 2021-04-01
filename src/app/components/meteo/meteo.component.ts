@@ -67,8 +67,14 @@ export class MeteoComponent implements OnInit {
   }
 
   dateFormat(date_string: string): string {
-    let date = new Date(date_string);
-    return date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
+    let options = {
+      weekday: 'long',
+      year: "numeric",
+      month:"2-digit",
+      day:"2-digit"
+    };
+    let date = new Date(date_string).toLocaleString("ro-RO",options)
+    return date;
   }
 
   updateLoading(loading: boolean) {

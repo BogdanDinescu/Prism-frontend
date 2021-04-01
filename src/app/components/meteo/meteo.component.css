@@ -1,10 +1,11 @@
 img {
-    width: 2em;
+    width: 3em;
 }
 
 .card {
     padding: 20px;
     margin: 10px;
+    width: 290px;
 }
 
 .cards {
