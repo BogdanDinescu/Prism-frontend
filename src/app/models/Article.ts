@@ -1,7 +1,8 @@
 export class Article {
     id: Number;
     title: string;
-    simHash: Number;
+    group: Number;
+    createDate: string;
     source: string;
     content: string;
     link: string;
@@ -10,7 +11,8 @@ export class Article {
     constructor() {
       this.id = 0;
       this.title = "";
-      this.simHash = 0;
+      this.group = 0;
+      this.createDate = "";
       this.source = "";
       this.content = "";
       this.link = "";

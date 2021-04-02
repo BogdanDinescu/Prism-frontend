@@ -4,6 +4,7 @@
   </a>
   <div class="card-body">
     <h5 class="card-title font-weight-bold">{{article.title}}</h5>
+    <h6 class="text-muted">{{dateFormat(article.createDate)}}</h6>
     <a [href]="article.source" target="_blank"><h6 class="card-subtitle text-muted">{{article.source}}</h6></a>
     <p class="card-text pt-1" [innerHtml]="article.content"></p>
   </div>

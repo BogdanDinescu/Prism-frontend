@@ -26,4 +26,15 @@ export class NewsArticleComponent implements OnInit {
       console.log('Could not copy text: ', err);
     });
   }
+
+  dateFormat(date_string: string): string {
+    let options = {
+      weekday: 'long',
+      year: "numeric",
+      month:"2-digit",
+      day:"2-digit"
+    };
+    let date = new Date(date_string).toLocaleString("ro-RO",options)
+    return date;
+  }
 }
