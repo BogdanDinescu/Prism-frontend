@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCalendar, NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthentificationService } from 'src/app/services/auth/authentification.service';
 import { NewsService } from 'src/app/services/news/news.service';
 import { PreferencesService } from 'src/app/services/preferences/preferences.service';
@@ -19,7 +19,8 @@ export class NewsComponent implements OnInit {
   public sources: any[];
   public loadingMore: boolean = false;
   public noSources: boolean;
-  public searchQuery: string;
+  public searchQuery: string = "";
+  public pickedDate: NgbDateStruct;
   private page: number = 0;
   private _array = Array;
 
@@ -27,7 +28,8 @@ export class NewsComponent implements OnInit {
     private modalService: NgbModal,
     private news: NewsService,
     private preferences: PreferencesService,
-    public auth: AuthentificationService
+    public auth: AuthentificationService,
+    private calendar: NgbCalendar
     ) { }
 
   openAddSourceModal() {
@@ -167,7 +169,8 @@ export class NewsComponent implements OnInit {
 
   search(): void {
     this.updateLoading(true);
-    this.news.searchNews(this.searchQuery).subscribe(
+    this.news.searchNews(this.searchQuery, 
+      this.pickedDate?`${this.pickedDate.month}/${this.pickedDate.day}/${this.pickedDate.year}`:'').subscribe(
       (res) => {
         this.updateLoading(false);
         if (res === null || res.news === null || res.news.length === 0) {

@@ -20,6 +20,7 @@
         Selectare Surse
     </button>
     <input class="form-control col-md-5 col-8" type="search" placeholder="Caută" aria-label="Search" [(ngModel)]="searchQuery" name="search">
+    <input class="form-control col-md-2 col-5" placeholder="Dată" (click)="d.toggle()" name="dp" [(ngModel)]="pickedDate" ngbDatepicker #d="ngbDatepicker">
     <button class="btn btn-outline-secondary m-2" (click)="search()">Caută</button>
 </form>
 <div class="text-center text-muted" *ngIf="noSources">
