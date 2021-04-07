@@ -152,15 +152,17 @@ export class NewsComponent implements OnInit {
     )
   }
 
-  deleteSource(id: Number) {;
-    this.news.deleteSource(id).subscribe(
-      (res) => {
-        this.getSources()
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+  deleteSource(id: Number) {
+    if(confirm("Sursa si articolele care provin de la aceasta vor fi seterse. Continuati?")) {
+      this.news.deleteSource(id).subscribe(
+        (res) => {
+          this.getSources()
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
   }
 
   search(): void {

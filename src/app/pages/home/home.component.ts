@@ -25,9 +25,11 @@ export class HomeComponent implements OnInit {
   }
 
   doOpen(content: string):void {
-    this.loading = true;
-    this.open = content;
-    localStorage.setItem("tab",content);
+    if (this.open != content) {
+      this.loading = true;
+      this.open = content;
+      localStorage.setItem("tab",content);
+    }
   }
 
   update(loading: boolean) {
