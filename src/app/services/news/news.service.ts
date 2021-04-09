@@ -43,9 +43,4 @@ export class NewsService {
   searchNews(searchQuery: string, date: string): Observable<any> {
     return this.http.get(this.url + 'news/search?searchQuery=' + searchQuery + "&date=" + date, this.getHeaders())
   }
-
-  // to be deleted
-  loadNewNews(): Observable<any> {
-    return this.http.get(this.url + 'news/load-new', this.getHeaders());
-  }
 }

@@ -198,10 +198,4 @@ export class NewsComponent implements OnInit {
       }
     )
   }
-
-  // to be deleted
-  loadNewNews(): void {
-    this.news.loadNewNews().subscribe();
-  }
-
 }

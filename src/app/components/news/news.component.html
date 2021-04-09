@@ -1,6 +1,5 @@
 <div class="collapse text-center bg-dark" id="sourceList">
     <div class="card source-list card-body">
-        <button class="m-2 btn btn-danger" *ngIf="auth.isAdmin()" (click)="loadNewNews()">Load new</button>
         <button class="m-2 btn btn-primary" *ngIf="auth.isAdmin()" (click)="openAddSourceModal()">Adaugă</button>
         <div class="btn-group-toggle" *ngFor="let source of sources">
             <div class="mr-1 ml-1" (click)="sourceClick(source.name)"
