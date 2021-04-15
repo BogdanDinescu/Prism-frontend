@@ -1,8 +1,8 @@
 <div class="collapse text-center bg-dark" id="sourceList">
     <div class="card source-list card-body">
-        <button class="m-2 btn btn-primary" *ngIf="auth.isAdmin()" (click)="openAddSourceModal()">Adaugă</button>
+        <button class="m-1 btn btn-primary" *ngIf="auth.isAdmin()" (click)="openAddSourceModal()">Adaugă +</button>
         <div class="btn-group-toggle" *ngFor="let source of sources">
-            <div class="mr-1 ml-1" (click)="sourceClick(source.name)"
+            <div class="m-1" (click)="sourceClick(source.name)"
             [ngClass]="source.selected ? 'btn btn-primary' : 'btn btn-outline-dark'">
                 {{source.name}}
             </div>
@@ -22,7 +22,10 @@
     <input class="form-control col-md-2 col-5" placeholder="Dată" (click)="d.toggle()" name="dp" [(ngModel)]="pickedDate" ngbDatepicker #d="ngbDatepicker">
     <button class="btn btn-outline-secondary m-2" (click)="search()">Caută</button>
 </form>
-<div class="text-center text-muted" *ngIf="noSources">
+<div class="text-center m-2" *ngIf="onSearch">
+    <button class="btn btn-danger pl-5 pr-5" (click)="backFromSearch()">Înapoi</button>
+</div>
+<div class="text-center text-muted" *ngIf="noSources && !onSearch">
     Nici o sursă selectată!    
 </div>
 <div class="d-flex justify-content-center flex-wrap">
@@ -40,7 +43,7 @@
         </ng-template> 
     </div>
 </div>
-<div class="text-center m-2" *ngIf="!noSources">
+<div class="text-center m-2" *ngIf="!noSources && !onSearch">
     <button class="btn btn-primary" (click)="loadMore()" [disabled] = "loadingMore">
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loadingMore"></span>
         Încarcă mai multe

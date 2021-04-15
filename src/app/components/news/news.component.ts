@@ -21,6 +21,7 @@ export class NewsComponent implements OnInit {
   public noSources: boolean;
   public searchQuery: string = "";
   public pickedDate: NgbDateStruct;
+  public onSearch: boolean = false;
   private page: number = 0;
   private _array = Array;
 
@@ -169,6 +170,8 @@ export class NewsComponent implements OnInit {
 
   search(): void {
     this.updateLoading(true);
+    this.page = 0;
+    this.onSearch = true;
     this.news.searchNews(this.searchQuery, 
       this.pickedDate?`${this.pickedDate.month}/${this.pickedDate.day}/${this.pickedDate.year}`:'').subscribe(
       (res) => {
@@ -185,12 +188,29 @@ export class NewsComponent implements OnInit {
     )
   }
 
+  backFromSearch(): void {
+    this.updateLoading(true);
+    this.onSearch = false;
+    this.searchQuery = "";
+    this.pickedDate = null;
+    this.news.getNews().subscribe(
+      (res) => {
+        this.articles = [];
+        this.updateArticles(res.news);
+        this.updateLoading(false);
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
+
   loadMore(): void {
     this.loadingMore = true;
     this.page = this.page + 1;
     this.news.getNews(this.page).subscribe(
       (res) => {
-        this.updateArticles(res.news)
+        this.updateArticles(res.news);
         this.loadingMore = false;
       },
       (err) => {
