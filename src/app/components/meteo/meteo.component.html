@@ -4,7 +4,7 @@
 <hr class="my-4">
 <div class="form-inline justify-content-center">
     <div class="alert alert-warning col-md-12 text-center" role="alert" *ngIf="showAlert">Locație dezactivată</div>
-    <button class="btn btn-primary m-2" (click)="getMeteoByLocation()">Locație curentă</button>
+    <button class="btn btn-primary m-2" (click)="getMeteoByLocation(); deletePreference()">Locație curentă</button>
     <input class="form-control col-md-5 col-8" type="search" placeholder="Alege oraș" aria-label="Search" [(ngModel)]="cityName" name="search">
     <button class="btn btn-outline-secondary m-2" (click)="searchCity()">Ok</button>
 </div>

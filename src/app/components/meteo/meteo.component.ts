@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MeteoService } from 'src/app/services/meteo/meteo.service';
+import { PreferencesService } from 'src/app/services/preferences/preferences.service';
 
 @Component({
   selector: 'app-meteo',
@@ -14,19 +15,27 @@ export class MeteoComponent implements OnInit {
   public cityName: string;
   public showAlert: boolean = false;
   public math = Math;
-  constructor(private meteo: MeteoService) { }
+  constructor(private meteo: MeteoService, private preferences: PreferencesService) { }
 
   ngOnInit(): void {
-    if (this.meteo.isCitySet()) {
-      this.getMeteoByCityName(this.meteo.getChosenCity());
-    } else {
-      this.getMeteoByLocation();
-    }
+    this.preferences.getCityPreferences().subscribe(
+      (res) => {
+        this.cityName = res?.city;
+        if (res && res.city !== null && typeof res.city !== 'undefined' && res.city !== "") {
+          this.getMeteoByCityName(res.city);
+        } else {
+          this.getMeteoByLocation();
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
   }
 
   searchCity() {
     this.updateLoading(true);
-    this.meteo.setChosenCity(this.cityName);
+    this.preferences.setCityPreferences(this.cityName).subscribe();
     this.getMeteoByCityName(this.cityName);
   }
 
@@ -43,7 +52,6 @@ export class MeteoComponent implements OnInit {
   }
 
   getMeteoByLocation() {
-    this.meteo.unsetCity();
     navigator.geolocation.getCurrentPosition(geo => {
       this.meteo.getMeteoByLatLon(geo.coords.latitude,geo.coords.longitude).subscribe(
         (res) => {
@@ -58,6 +66,10 @@ export class MeteoComponent implements OnInit {
       this.displayAlert();
       this.updateLoading(false);
     })
+  }
+
+  deletePreference() {
+    this.preferences.deleteCityPreferences().subscribe();
   }
 
   displayAlert() {

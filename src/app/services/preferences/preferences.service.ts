@@ -21,7 +21,18 @@ export class PreferencesService {
   }
 
   setNewsPreferences(data: any): Observable<any> {
-    return this.http
-      .post(this.url + 'preferences/news', data, this.getHeaders())
+    return this.http.post(this.url + 'preferences/news', data, this.getHeaders())
+  }
+
+  setCityPreferences(city: string): Observable<any> {
+    return this.http.post(this.url + 'preferences/city', `"${city}"`, this.getHeaders())
+  }
+
+  getCityPreferences(): Observable<any> {
+    return this.http.get(this.url + 'preferences/city', this.getHeaders())
+  }
+
+  deleteCityPreferences(): Observable<any> {
+    return this.http.delete(this.url + 'preferences/city', this.getHeaders())
   }
 }

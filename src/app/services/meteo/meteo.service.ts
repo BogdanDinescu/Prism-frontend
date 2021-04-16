@@ -27,20 +27,4 @@ export class MeteoService {
   getMeteoByLatLon(lat: Number, lng: Number): Observable<any> {
     return this.http.get(this.url + 'meteo/location?lat=' + lat + '&lng=' + lng, this.getHeaders());
   }
-
-  getChosenCity() {
-    return localStorage.getItem('chosenCity');
-  }
-
-  setChosenCity(city: string) {
-    localStorage.setItem('chosenCity', city);
-  }
-
-  isCitySet() {
-    return localStorage.getItem('chosenCity') !== null;
-  }
-
-  unsetCity() {
-    localStorage.removeItem('chosenCity');
-  }
 }
