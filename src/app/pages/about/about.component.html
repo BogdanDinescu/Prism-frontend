@@ -1,0 +1,38 @@
+<p class="text-left bg-light p-2">
+    <a href="/" class="text-dark ml-2">Înapoi</a>
+</p>
+<div class="d-flex justify-content-center align-items-center flex-column">
+    <img class="logo" src="/assets/prism-logo.png">
+    <h4 class="text-center title">Locul unde informația este liberă!</h4>
+    <div class="col-md-6 col-12 p-20 m-10 text-center text-justify">Realitatea este așa cum o percepem fiecare.
+        Însă percepția poate fi alterată de prisma prin care privim. Pentru a vedea lumea clar trebuie să avem access limpede și nerestricționat la informație.
+    </div>
+    <div class="col-md-6 col-12 d-flex justify-content-center align-items-center flex-wrap text-center">
+            <div class="" *ngFor="let source of sources">
+                <div class="m-1" (click)="sourceClick(source.name)"
+                [ngClass]="source.selected ? 'btn btn-primary' : 'btn btn-outline-dark'">
+                    {{source.name}}
+                </div>
+            </div>
+           <img class="logo" src="/assets/photo.jpeg" id="photo">
+    </div>
+    <div class="card shadow bg-white rounded">
+        <a href="/" target="_blank">
+          <img class="card-img-top" src="/assets/prism-only-logo.png" alt="Fara imagine">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">Titlu</h5>
+          <h6 class="text-muted">{{date}}</h6>
+          <a href="/" target="_blank"><h6 class="card-subtitle text-muted">Prism</h6></a>
+          <p class="card-text pt-1">Urmărește Prism pentru cele mai noi informații depre actualitate.</p>
+        </div>
+        <div class="card-footer text-center">
+          <a class="ml-1" href="/" target="_blank">Citește mai mult</a>
+        </div>
+    </div>
+</div>
+
+
+<p class="mb-0 mt-10 text-center bg-dark text-light p-20">
+    <a href="mailto:bogdandinescu@tutanota.com" class="text-light mr-2">Dinescu Bogdan-George</a>{{year}}
+</p>

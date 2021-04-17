@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AuthGuard } from './services/auth/auth.guard';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { AboutComponent } from './pages/about/about.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: "about",
+    component: AboutComponent,
   },
   {
     path: '',

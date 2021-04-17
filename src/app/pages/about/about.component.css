@@ -1,0 +1,29 @@
+.logo {
+    width: 15em;
+    height: auto;
+}
+
+.card {
+    width: 90vw;
+    margin: 5px;
+}
+
+.carousel-inner .card {
+    margin: 0px;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 14em;
+    object-fit: cover;
+}
+
+@media screen and (min-width: 768px) {
+    .card {
+        width: 25em;
+    }
+
+    .card-img-top {
+        height: 25em;
+    }
+}

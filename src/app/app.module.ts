@@ -19,6 +19,7 @@ import { MeteoComponent } from './components/meteo/meteo.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NewsArticleCarouselComponent } from './components/news-article-carousel/news-article-carousel.component';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NewsArticleCarouselComponent } from './components/news-article-carousel
     NotFoundPageComponent,
     ChangePasswordModalComponent,
     MeteoComponent,
-    NewsArticleCarouselComponent
+    NewsArticleCarouselComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
