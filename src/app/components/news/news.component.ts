@@ -139,8 +139,9 @@ export class NewsComponent implements OnInit {
       (res) => {
         this.news.getNews().subscribe(
           (res) => {
-            this.articles = res.news;
+            this.updateArticles(res.news);
             this.noSources = this.selectedSourcesIds().length === 0;
+            this.onSearch = false;
             this.updateLoading(false);
           },
           (err) => {

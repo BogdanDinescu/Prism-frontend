@@ -28,6 +28,9 @@
 <div class="text-center text-muted" *ngIf="noSources && !onSearch">
     Nici o sursă selectată!    
 </div>
+<div class="text-center text-muted" *ngIf="onSearch && !(articles.length)">
+    Nici un rezultat găsit!    
+</div>
 <div class="d-flex justify-content-center flex-wrap">
     <div *ngFor="let article of articles">
         <ng-template [ngIf]="_array.isArray(article)" [ngIfElse]="simpleArticle">
