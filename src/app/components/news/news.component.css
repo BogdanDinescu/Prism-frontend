@@ -15,3 +15,19 @@ span sup {
     position: absolute;
     left: 0;
 }
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.up-button {
+    width: 2em;
+    opacity: 0.5;
+}
+
+.up-button:hover {
+    opacity: 1;
+    transition: all .2s ease-in-out;
+}
