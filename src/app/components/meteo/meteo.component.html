@@ -1,13 +1,13 @@
 <h1 class="display-4 text-center">Meteo</h1>
-<h5 class="display-5 text-center text-muted" *ngIf="meteoData !== undefined && meteoData !== null">{{meteoData.city_name}}</h5> 
-<h6 class="display-6 text-center text-muted">Sursă: <a href="https://www.weatherbit.io" target="_blank">Weatherbit</a></h6> 
+<h5 class="display-5 text-center text-muted" *ngIf="meteoData !== undefined && meteoData !== null">{{meteoData.city_name}}</h5>
+<h6 class="display-6 text-center text-muted">Sursă: <a href="https://www.weatherbit.io" target="_blank">Weatherbit</a></h6>
 <hr class="my-4">
-<div class="form-inline justify-content-center">
+<form class="form-inline justify-content-center" (ngSubmit)="searchCity()">
     <div class="alert alert-warning col-md-12 text-center" role="alert" *ngIf="showAlert">Locație dezactivată</div>
-    <button class="btn btn-primary m-2" (click)="getMeteoByLocation(); deletePreference()">Locație curentă</button>
+    <button type="button" class="btn btn-primary m-2" (click)="getMeteoByLocation(); deletePreference()">Locație curentă</button>
     <input class="form-control col-md-5 col-8" type="search" placeholder="Alege oraș" aria-label="Search" [(ngModel)]="cityName" name="search">
-    <button class="btn btn-outline-secondary m-2" (click)="searchCity()">Ok</button>
-</div>
+    <button type="submit" class="btn btn-outline-secondary m-2">Ok</button>
+</form>
 
 <div class="cards">
     <div class="card" *ngFor="let data of meteoData.data; let first = first;" [ngClass]="{ 'border-dark' : first}">
