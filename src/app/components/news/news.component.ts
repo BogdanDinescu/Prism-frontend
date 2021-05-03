@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbCalendar, NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AuthentificationService } from 'src/app/services/auth/authentification.service';
+import { AuthentificationService } from 'src/app/services/auth/authentication.service';
 import { NewsService } from 'src/app/services/news/news.service';
 import { PreferencesService } from 'src/app/services/preferences/preferences.service';
 import { AddSourceModalComponent } from 'src/app/components/add-source-modal/add-source-modal.component';

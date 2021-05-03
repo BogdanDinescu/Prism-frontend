@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthentificationService } from 'src/app/services/auth/authentification.service';
+import { AuthentificationService } from 'src/app/services/auth/authentication.service';
 
 @Component({
   selector: 'app-change-password-modal',

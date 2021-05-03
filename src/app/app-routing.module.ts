@@ -18,7 +18,7 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: "about",
+    path: 'about',
     component: AboutComponent,
   },
   {

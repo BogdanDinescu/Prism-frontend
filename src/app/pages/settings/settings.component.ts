@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ChangePasswordModalComponent } from 'src/app/components/change-password-modal/change-password-modal.component';
 import { User } from 'src/app/models/User';
-import { AuthentificationService } from 'src/app/services/auth/authentification.service';
+import { AuthentificationService } from 'src/app/services/auth/authentication.service';
 
 
 @Component({
