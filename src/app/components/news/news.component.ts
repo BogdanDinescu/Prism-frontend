@@ -121,7 +121,7 @@ export class NewsComponent implements OnInit {
     this.loadingChange.emit(loading);
   }
 
-  sourceClick(sourceId:string): void {
+  sourceClick(sourceId: number): void {
     let foundSource = this.sources.find(source => source.id === sourceId);
     if (foundSource) {
       foundSource.selected = !foundSource.selected;
