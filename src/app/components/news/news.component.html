@@ -2,7 +2,7 @@
     <div class="card source-list card-body">
         <button class="m-1 btn btn-primary" *ngIf="auth.isAdmin()" (click)="openAddSourceModal()">Adaugă +</button>
         <div class="btn-group-toggle" *ngFor="let source of sources">
-            <div class="m-1" (click)="sourceClick(source.name)"
+            <div class="m-1" (click)="sourceClick(source.id)"
             [ngClass]="source.selected ? 'btn btn-primary' : 'btn btn-outline-dark'">
                 {{source.name}}
             </div>

@@ -121,8 +121,8 @@ export class NewsComponent implements OnInit {
     this.loadingChange.emit(loading);
   }
 
-  sourceClick(sourceName:string): void {
-    let foundSource = this.sources.find(source => source.name === sourceName);
+  sourceClick(sourceId:string): void {
+    let foundSource = this.sources.find(source => source.id === sourceId);
     if (foundSource) {
       foundSource.selected = !foundSource.selected;
     }
@@ -139,6 +139,7 @@ export class NewsComponent implements OnInit {
       (res) => {
         this.news.getNews().subscribe(
           (res) => {
+            this.articles = [];
             this.updateArticles(res.news);
             this.noSources = this.selectedSourcesIds().length === 0;
             this.onSearch = false;
