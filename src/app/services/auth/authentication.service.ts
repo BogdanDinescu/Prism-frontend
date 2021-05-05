@@ -52,7 +52,15 @@ export class AuthentificationService {
   }
 
   isAdmin(): boolean {
-    return localStorage.getItem('role') === 'admin';
+    var token = this.getToken();
+    if (token) {
+      var decoded = jwt_decode(token);
+      if (decoded['role'] === 'admin') {
+        return true;
+      }
+      return false;
+    }
+    return false;
   }
 
   getUser(): Observable<any> {
@@ -86,7 +94,6 @@ export class AuthentificationService {
         tap((response) => {
           localStorage.setItem('token', response.token);
           localStorage.setItem('name', response.name);
-          localStorage.setItem('role', response.role);
         })
       );
   }
