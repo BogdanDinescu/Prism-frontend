@@ -1,47 +1,40 @@
 <nav class="navbar navbar-dark bg-dark">
   <a href="/"><h2 class="navbar-brand mb-0"><img class="logo" src="/assets/prism-only-logo.png">Înapoi</h2></a>
 </nav>
-<div class="jumbotron">
-    <div class="text-center">
-        <h1 class="display-4">Setări</h1>
-    </div>
-    <hr class="my-4">
-    <h5 class="display-5">Salut, {{user.name}}</h5>
-    <h6 class="display-6 text-muted">{{user.email}}</h6>
-    <br>
-    <form [formGroup]="userForm" (ngSubmit)="doChange()" class="border rounded pl-0 col-12 col-md-2">
-      <div class="form-group">
-        <label>Nume</label>
+<h1 class="display-4 text-center">Setări</h1>
+<h5 class="display-5 text-center text-muted">Salut, {{user.name}}</h5>
+<h6 class="display-6 text-center text-muted">{{user.email}}</h6>
+<hr class="my-4">
+<div class="p-3">
+    <form [formGroup]="userForm" (ngSubmit)="doChange()" class="form-group">
+      <div class="form-inline">
         <input
-            class="form-control"
+            class="form-control col-md-2 col-10 mr-2"
             type="text"
-            placeholder="Name ..."
+            placeholder="Nume ..."
             formControlName="Name"
         />
-        <span 
+          <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="userForm.status === 'INVALID'"
+        >
+          Salvare
+        </button>
+      </div>
+      <div 
             class="text-danger" 
             *ngIf="!userForm.controls.Name.pristine && userForm.controls.Name.status === 'INVALID'"
-        >Numele nu poate fi gol</span>
-      </div>
-  
-      <button
-        type="submit"
-        class="btn btn-success"
-        [disabled]="userForm.status === 'INVALID'"
-      >
-        Salvare
-      </button>
-      <br/>
-      <span
+        >Numele nu poate fi gol</div>
+      <div
             class="text-danger" 
             *ngIf="errorMessage.length"
-        >{{errorMessage}}</span>
-      <span 
+        >{{errorMessage}}</div>
+      <div 
             class="text-success" 
-            *ngIf="success"
-        >Succes</span>
+            *ngIf="success && userForm.status === 'VALID'"
+        >Succes</div>
     </form>
-    <br>
     <button
       type="button"
       class="btn btn-primary mb-2"

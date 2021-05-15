@@ -57,6 +57,7 @@ export class SettingsComponent implements OnInit {
       this.auth.updateUser(this.userForm.value).subscribe(
         (res) => {
           this.success = true;
+          setTimeout(function() {this.success = false;}.bind(this),3000);
           this.errorMessage = "";
           this.user = res;
         },
