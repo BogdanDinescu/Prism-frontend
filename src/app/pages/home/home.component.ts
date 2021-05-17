@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ThemeService } from 'ng-bootstrap-darkmode';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private themeService: ThemeService,
     ) { }
 
   ngOnInit(): void {

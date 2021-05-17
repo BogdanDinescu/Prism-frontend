@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemeService } from 'ng-bootstrap-darkmode';
 
 @Component({
   selector: 'app-about',
@@ -16,7 +17,7 @@ export class AboutComponent implements OnInit {
   {name:"Sursă4",selected: false},
   {name:"Sursă5",selected: false}];
 
-  constructor() { }
+  constructor(private themeService: ThemeService,) { }
 
   ngOnInit(): void {
     this.year = new Date().getFullYear()

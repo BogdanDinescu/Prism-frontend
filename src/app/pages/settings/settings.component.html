@@ -35,6 +35,14 @@
             *ngIf="success && userForm.status === 'VALID'"
         >Succes</div>
     </form>
+    <label class="mr-2">Temă:</label>
+    <div class="btn-group btn-group-toggle mb-2" ngbRadioGroup name="themes" [(ngModel)]="theme" (change)="themeChange()">
+      <label ngbButtonLabel class="btn-light">
+        <input ngbButton type="radio" value="light">Luminoasă</label>
+      <label ngbButtonLabel class="btn-dark">
+        <input ngbButton type="radio" value="dark">Întunecată</label>
+    </div>
+    <br>
     <button
       type="button"
       class="btn btn-primary mb-2"

@@ -1,4 +1,4 @@
-<div id="cardCarousel{{tuple[0].id}}" class="card shadow bg-white rounded carousel slide" data-interval="false">
+<div id="cardCarousel{{tuple[0].id}}" class="card shadow rounded carousel slide" data-interval="false">
     <div class="carousel-inner">
         <div *ngFor="let article of tuple; let first = first;" [ngClass]="{ 'active' : first}" class="carousel-item">
             <app-news-article

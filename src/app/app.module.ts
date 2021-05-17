@@ -20,6 +20,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NewsArticleCarouselComponent } from './components/news-article-carousel/news-article-carousel.component';
 import { AboutComponent } from './pages/about/about.component';
+import { NgBootstrapDarkmodeModule, THEME_LOADER, THEME_SAVER} from 'ng-bootstrap-darkmode';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { AboutComponent } from './pages/about/about.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    NgBootstrapDarkmodeModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

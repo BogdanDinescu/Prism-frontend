@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ThemeService } from 'ng-bootstrap-darkmode';
 import { ChangePasswordModalComponent } from 'src/app/components/change-password-modal/change-password-modal.component';
 import { User } from 'src/app/models/User';
 import { AuthentificationService } from 'src/app/services/auth/authentication.service';
@@ -16,15 +17,17 @@ import { AuthentificationService } from 'src/app/services/auth/authentication.se
 export class SettingsComponent implements OnInit {
 
   public user: User = new User();
-  userForm: FormGroup;
-  success: boolean = false;
-  errorMessage: string = "";
+  public userForm: FormGroup;
+  public success: boolean = false;
+  public errorMessage: string = "";
+  public theme: string;
 
   constructor(
     private router: Router,
     public auth: AuthentificationService,
     private formBuilder: FormBuilder,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private themeService: ThemeService,
     ) { }
 
   getUser() {
@@ -41,8 +44,16 @@ export class SettingsComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       Name: ['', [Validators.required]],
     });
+    this.themeService.theme$.subscribe(
+      (theme) => {
+        this.theme = theme;
+    });
   }
   
+  themeChange() {
+    this.themeService.theme = this.theme;
+  }
+
   openChangePasswordModal() {
     const modalRef = this.modalService.open(ChangePasswordModalComponent);
     modalRef.componentInstance.dismissCallback.subscribe(
