@@ -21,6 +21,7 @@ import { environment } from '../environments/environment';
 import { NewsArticleCarouselComponent } from './components/news-article-carousel/news-article-carousel.component';
 import { AboutComponent } from './pages/about/about.component';
 import { NgBootstrapDarkmodeModule, THEME_LOADER, THEME_SAVER} from 'ng-bootstrap-darkmode';
+import { DeleteUserModalComponent } from './components/delete-user-modal/delete-user-modal.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NgBootstrapDarkmodeModule, THEME_LOADER, THEME_SAVER} from 'ng-bootstra
     ChangePasswordModalComponent,
     MeteoComponent,
     NewsArticleCarouselComponent,
-    AboutComponent
+    AboutComponent,
+    DeleteUserModalComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +53,6 @@ import { NgBootstrapDarkmodeModule, THEME_LOADER, THEME_SAVER} from 'ng-bootstra
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ AddSourceModalComponent, ModifySourceModalComponent, ChangePasswordModalComponent ]
+  entryComponents: [ AddSourceModalComponent, ModifySourceModalComponent, ChangePasswordModalComponent, DeleteUserModalComponent ]
 })
 export class AppModule { }

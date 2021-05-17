@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Șterge cont</h4>
+    <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form [formGroup]="passwordForm" class="col-12">
+        <p class="text-danger">Sunteți sigur că doriți să ștergeți contul și datele asociate lui? Această acțiune e ireversibilă</p>
+          <div class="form-group">
+              <label>Parolă</label>
+              <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Parolă..."
+                  formControlName="Password"
+              />
+              <span 
+                  class="text-danger"
+                  *ngIf="!passwordForm.controls.Password.pristine && passwordForm.controls.Password.status === 'INVALID'"
+              >Câmpul nu poate fi gol</span>
+          </div>
+      </form>
+      <span
+            class="text-danger" 
+            *ngIf="errorMessage.length"
+        >{{errorMessage}}</span>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-outline-danger" (click)="dismiss()">Renunță</button>
+      <button type="submit" class="btn btn-outline-primary" (click)="changePassword()" [disabled]="passwordForm.status === 'INVALID'">Sunt sigur</button>
+  </div>

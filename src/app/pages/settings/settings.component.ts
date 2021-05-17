@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ThemeService } from 'ng-bootstrap-darkmode';
 import { ChangePasswordModalComponent } from 'src/app/components/change-password-modal/change-password-modal.component';
+import { DeleteUserModalComponent } from 'src/app/components/delete-user-modal/delete-user-modal.component';
 import { User } from 'src/app/models/User';
 import { AuthentificationService } from 'src/app/services/auth/authentication.service';
 
@@ -95,17 +96,12 @@ export class SettingsComponent implements OnInit {
   }
 
   deleteUser() {
-    if(confirm("Contul va fi șters și toate datele asociate lui. Sunteți sigur?")) {
-      this.auth.deleteUser().subscribe(
-        (res) => {
-          localStorage.clear();
-          this.router.navigate(['/login']);
-        },
-        (err) => {
-          console.log(err);
-        }
-      )
-    }
+    const modalRef = this.modalService.open(DeleteUserModalComponent);
+    modalRef.componentInstance.dismissCallback.subscribe(
+      () => {
+        modalRef.dismiss();
+      }
+    );
   }
 
 }

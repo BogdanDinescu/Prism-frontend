@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { from, Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { tap, catchError } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import jwt_decode from "jwt-decode";
 
 @Injectable({
@@ -71,20 +71,16 @@ export class AuthentificationService {
     return this.http.put(this.url + 'user', data, this.getHeadersWithCredentials())
   }
   
-  deleteUser(): Observable<any> {
-    return this.http.delete(this.url + 'user',this.getHeadersWithCredentials())
+  deleteUser(data: any): Observable<any> {
+    return this.http.put(this.url + 'user/delete-user', data, this.getHeadersWithCredentials())
   }
 
   changePassword(data: any): Observable<any> {
-    return this.http.put(this.url + 'user/change-password', data, this.getHeadersWithCredentials());
+    return this.http.put(this.url + 'user/change-password', data, this.getHeadersWithCredentials())
   }
 
   register(data: any): Observable<any> {
-    return this.http
-      .post(this.url + 'user/register', data, this.getHeaders())
-      .pipe(
-        tap((response) => console.log(response))
-      );
+    return this.http.post(this.url + 'user/register', data, this.getHeaders())
   }
 
   login(data: any): Observable<any> {
