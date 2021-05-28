@@ -1,6 +1,27 @@
-<nav class="navbar navbar-dark bg-dark">
-  <a href="/"><h2 class="navbar-brand mb-0"><img class="logo" src="/assets/prism-only-logo.png">Înapoi</h2></a>
+<nav class="navbar sticky-top navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+  <a href="/"><h1 class="navbar-brand mb-0"><img class="logo" src="/assets/prism-only-logo.png">Prism</h1></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" role="button" href="/settings">Setări</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" role="button" href="/">Acasă</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" role="button" href="/about">Despre</a>
+    </li>
+      <li class="nav-item">
+          <a class="nav-link text-danger" role="button" (click)="logout()">Log out</a>
+      </li>
+    </ul>
+  </div>
 </nav>
+
 <h1 class="display-4 text-center">Setări</h1>
 <h5 class="display-5 text-center text-muted">Salut, {{user.name}}</h5>
 <h6 class="display-6 text-center text-muted">{{user.email}}</h6>

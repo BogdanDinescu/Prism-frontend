@@ -104,4 +104,8 @@ export class SettingsComponent implements OnInit {
     );
   }
 
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login'])
+  }
 }
