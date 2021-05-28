@@ -22,6 +22,9 @@ export class NewsArticleComponent implements OnInit {
     navigator.clipboard.writeText(text).then(function() {
       console.log('Copying to clipboard was successful!');
       self.copySuccess = true;
+      setTimeout(function (){
+        self.copySuccess = false;
+      },3000)   
     }, function(err) {
       console.log('Could not copy text: ', err);
     });

@@ -1,16 +1,15 @@
 <div id="card{{article.id}}" class="card shadow rounded">
-  <a [href]="article.link" target="_blank">
-    <img class="card-img-top" [src]="article.imageUrl" alt="Fara imagine">
-  </a>
+  <img class="card-img-top" [src]="article.imageUrl" alt="Fara imagine">
   <div class="card-body">
-    <h5 class="card-title font-weight-bold">{{article.title}}</h5>
+    <h5 class="card-title">{{article.title}}</h5>
     <h6 class="text-muted">{{dateFormat(article.createDate)}}</h6>
     <a [href]="article.source" target="_blank"><h6 class="card-subtitle text-muted">{{article.source}}</h6></a>
-    <p class="card-text pt-1" [innerHtml]="article.content"></p>
-  </div>
-  <div class="card-footer text-center">
-    <a class="ml-1 float-left" [href]="article.link" target="_blank">Citește mai mult</a>
-    <a class="mr-1 float-right" [ngClass]="{ 'text-success' : copySuccess }" role="button" (click)="copyToClipboard(article.link)">Copiază sursa</a>
+    <div class="collapse card-text" [innerHtml]="article.content" id="collapse{{article.id}}"></div>
+    <ul class="list-group list-group-flush text-center">
+      <a class="list-group-item" data-toggle="collapse" href="#collapse{{article.id}}" role="button" aria-expanded="false">Citește rezumat</a>
+      <a class="list-group-item" [href]="article.link" target="_blank">Citește articolul</a>
+      <a class="list-group-item" [ngClass]="{ 'text-success' : copySuccess }" role="button" (click)="copyToClipboard(article.link)">Copiază sursa</a>
+    </ul>
   </div>
 </div>
 
