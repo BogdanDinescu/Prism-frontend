@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
   public errorMessage: string = '';
   public success: boolean = false;
+  public loading: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthentificationService
@@ -37,12 +38,16 @@ export class RegisterComponent implements OnInit {
 
   doRegister() {
     if (this.registerForm.status === 'VALID') {
+      this.loading = true;
       this.auth.register(this.registerForm.value).subscribe(
         (res) => {
           this.success = true;
           this.errorMessage = "";
+          this.loading = false;
         },
         (err) => {
+          this.success = false;
+          this.loading = false;
           if (err.error && err.error.errors) {
             if (err.error.errors.Email) {
               this.errorMessage = err.error.errors.Email[0];

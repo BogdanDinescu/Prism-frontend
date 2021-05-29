@@ -61,11 +61,12 @@
       [disabled]="registerForm.status === 'INVALID'"
     >
       Înregistrare
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loading"></span>
     </button>
     <br>
     <span 
           class="text-danger" 
-          *ngIf="errorMessage.length"
+          *ngIf="errorMessage.length && !success"
       >{{errorMessage}}</span>
     <span 
           class="text-success" 
