@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from 'ng-bootstrap-darkmode';
+import { Article } from 'src/app/models/Article';
 
 @Component({
   selector: 'app-about',
@@ -10,6 +11,16 @@ export class AboutComponent implements OnInit {
 
   public year: number;
   public date: string;
+  public card: Article = {
+    id: 1,
+    group: 0,
+    title: "Titlu articol",
+    imageUrl: "/assets/prism-only-logo.png",
+    createDate: new Date().toString(),
+    content: "Urmărește Prism pentru cele mai noi informații depre actualitate.",
+    source: "/",
+    link: "/"
+  };
   public sources: any = [
   {name:"Sursă1",selected: false},
   {name:"Sursă2",selected: true},
@@ -28,7 +39,6 @@ export class AboutComponent implements OnInit {
       month:"2-digit",
       day:"2-digit"
     };
-    this.date = new Date().toLocaleString("ro-RO",options)
   }
 
   sourceClick(sourceName) {
