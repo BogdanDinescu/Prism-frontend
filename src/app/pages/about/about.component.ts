@@ -11,16 +11,39 @@ export class AboutComponent implements OnInit {
 
   public year: number;
   public date: string;
-  public card: Article = {
-    id: 1,
-    group: 0,
-    title: "Titlu articol",
-    imageUrl: "/assets/prism-only-logo.png",
-    createDate: new Date().toString(),
-    content: "Urmărește Prism pentru cele mai noi informații depre actualitate.",
-    source: "/",
-    link: "/"
-  };
+  public cards: any = [
+    {
+      id: 1,
+      group: 0,
+      title: "Știri",
+      imageUrl: "/assets/prism-only-logo.png",
+      createDate: new Date().toString(),
+      content: "Urmărește Prism pentru cele mai noi informații depre actualitate.",
+      source: "/",
+      link: "/"
+    },
+    {
+      id: 2,
+      group: 0,
+      title: "Setări",
+      imageUrl: "/assets/prism-only-logo.png",
+      createDate: new Date().toString(),
+      content: "De aici utilizatorul își poate schimba numele, parola, tema interfeței (luminoasă sau întunecată) sau își poate șterge contul. Acțiunile de schimbare a parolei și de ștergere a contului deschid ferestre modal, unde utilizatorul iși va introduce din nou parola din motive de securitate.",
+      source: "/settings",
+      link: "/settings"
+    },
+    {
+      id: 3,
+      group: 0,
+      title: "Meteo",
+      imageUrl: "/assets/prism-only-logo.png",
+      createDate: new Date().toString(),
+      content: "Tot sub formă de listă de card-uri sunt afișate diverse informații meteorologice cum ar fi: temperatura prognozată, temperatura minimă, temperatura maximă, probabilitatea de precipitații, viteza vântului. Fiecare card reprezintă o zi dintr-un total de 16. Primul reprezintă ziua curentă și are conturul îngroșat. În partea de sus a paginii se găsește numele orașului pentru care este prezentată prognoza și o bară de căutare pentru setarea altui oraș. ",
+      source: "/",
+      link: "/"
+    }
+  ];
+
   public sources: any = [
   {name:"Sursă1",selected: false},
   {name:"Sursă2",selected: true},
